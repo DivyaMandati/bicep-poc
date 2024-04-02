@@ -17,3 +17,11 @@ resource webApplication 'Microsoft.Web/sites@2021-01-15' = {
     appServicePlan
   ]
 }
+resource appInsightsComponents 'Microsoft.Insights/components@2020-02-02' = {
+  name: 'az-bicep-appin'
+  location: resourceGroup().location
+  kind: 'web'
+  properties: {
+    Application_Type: 'web'
+  }
+}
