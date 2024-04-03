@@ -7,6 +7,17 @@ resource sqlServer 'Microsoft.Sql/servers@2014-04-01' ={
   }
 }
 
+
+resource sqlServerFirewallRules 'Microsoft.Sql/servers/firewallRules@2021-02-01-preview' = {
+  parent: sqlServer
+  name: 'MyIPaddress'
+  properties: {
+    startIpAddress: '1.12.123'
+    endIpAddress: '1.12.123'
+  }
+}
+
+
 resource sqlServerDatabase 'Microsoft.Sql/servers/databases@2014-04-01' = {
   parent: sqlServer
   name: 'database1'
